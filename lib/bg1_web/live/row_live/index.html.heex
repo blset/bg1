@@ -1,0 +1,44 @@
+<h1>Listing Rows</h1>
+
+
+<%= inspect @current_user %>
+<a href="/parameters">parameters</a>
+<a href="/rows">rows</a>
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.row_index_path(@socket, :index)}>
+    <.live_component
+      module={Bg1Web.RowLive.FormComponent}
+      id={@row.id || :new}
+      title={@page_title}
+      action={@live_action}
+      row={@row}
+      return_to={Routes.row_index_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="rows">
+    <%= for row <- @rows do %>
+      <tr id={"row-#{row.id}"}>
+        <td><%= row.title %></td>
+
+        <td>
+          <span><%= live_redirect "live redirect Show", to: Routes.row_show_path(@socket, :show, row) %></span>
+          | <span><a href={"/rows/#{row.id}"}>full reload link</a></span>
+          | <span><%= live_patch "Edit", to: Routes.row_index_path(@socket, :edit, row) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: row.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Row", to: Routes.row_index_path(@socket, :new) %></span>

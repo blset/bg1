@@ -1,0 +1,18 @@
+<h1>Show Parameter</h1>
+
+<ul>
+
+  <li>
+    <strong>Phonelink:</strong>
+    <%= @parameter.phonelink %>
+  </li>
+
+  <li>
+    <strong>Signature:</strong>
+    <%= @parameter.signature %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.parameter_path(@conn, :edit, @parameter) %></span> |
+<span><%= link "Back", to: Routes.parameter_path(@conn, :index) %></span>

@@ -1,0 +1,33 @@
+<h1>Show Row</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.row_show_path(@socket, :show, @row)}>
+    <.live_component
+      module={Bg1Web.RowLive.FormComponent}
+      id={@row.id}
+      title={@page_title}
+      action={@live_action}
+      row={@row}
+      return_to={Routes.row_show_path(@socket, :show, @row)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @row.title %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.row_show_path(@socket, :edit, @row), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.row_index_path(@socket, :index) %></span>
+
+<%= inspect @current_user.parameter %>
+
+<br>
+<br>
+<ContactComponent.display row={@row} parameter={@current_user.parameter}/>
+
