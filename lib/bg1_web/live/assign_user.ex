@@ -13,6 +13,12 @@ defmodule Bg1Web.AssignUser do
           Accounts.get_user_by_session_token_with_parameter(session["user_token"])
         end
       )
+      |> assign_new(
+        :testvar,
+        fn ->
+          "test var from assign new"
+        end
+      )
     }
   end
 end

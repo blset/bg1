@@ -25,7 +25,12 @@
 <span><%= live_patch "Edit", to: Routes.row_show_path(@socket, :edit, @row), class: "button" %></span> |
 <span><%= live_redirect "Back", to: Routes.row_index_path(@socket, :index) %></span>
 
-<%= inspect @current_user.parameter %>
+<div>
+<%= inspect @testvar %>
+</div>
+  <div>
+<%= inspect @current_user %>
+</div>
 
 <br>
 <br>

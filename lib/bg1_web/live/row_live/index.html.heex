@@ -1,8 +1,12 @@
 <h1>Listing Rows</h1>
 
-
+<div>
+<%= inspect @testvar %>
+</div>
+  <div>
 <%= inspect @current_user %>
-<a href="/parameters">parameters</a>
+</div>
+    <a href="/parameters">parameters</a>
 <a href="/rows">rows</a>
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.row_index_path(@socket, :index)}>
