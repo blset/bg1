@@ -8,19 +8,19 @@ defmodule Bg1Web.ContactComponent do
 
   @moduledoc """
 
-  component templates
+    component templates
 
-  """
+    """
 
 
   attr :row, Row, required: true
   attr :parameter, Parameter, default: %Parameter{}
   def display(assigns) do
     ~H"""
-      <%= @row.title%>
+    <%= @row.title%>
 
-      <%= inspect Map.get(@parameter, :phonelink) %>
-      <%= inspect @parameter.phonelink %>
+    Phonelink <%= Map.get @parameter, :phonelink %>
+      <%#= inspect @parameter.phonelink %>
     """
   end
 

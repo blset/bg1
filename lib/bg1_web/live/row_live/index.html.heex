@@ -4,7 +4,9 @@
 <%= inspect @testvar %>
 </div>
   <div>
-<%= inspect @current_user %>
+current_user preloaded parameter 
+  <br>
+  <%= inspect @current_user.parameter %>
 </div>
     <a href="/parameters">parameters</a>
 <a href="/rows">rows</a>
@@ -35,7 +37,8 @@
         <td><%= row.title %></td>
 
         <td>
-          <span><%= live_redirect "live redirect Show", to: Routes.row_show_path(@socket, :show, row) %></span>
+  <.link navigate={"/rows/#{row.id}"}> navigate link</.link> |
+  <.link patch={"/rows/#{row.id}"}> patch link</.link>
           | <span><a href={"/rows/#{row.id}"}>full reload link</a></span>
           | <span><%= live_patch "Edit", to: Routes.row_index_path(@socket, :edit, row) %></span>
           <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: row.id, data: [confirm: "Are you sure?"] %></span>
